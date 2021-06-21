@@ -18,7 +18,7 @@ public class Controller {
     public String setCoordinates(@RequestBody Map<String, String> coordinates) {
         String result;
         if (model.fillIn(coordinates)) {
-            result = "All right";
+            result = "All right. You can start searching now";
         } else {
             result = "Invalid data";
         }
@@ -27,6 +27,6 @@ public class Controller {
 
     @GetMapping(value = "/searchResult", consumes = "application/json", produces = "application/json")
     public JSONObject searchResult(@RequestBody Map<String, Integer> coordinates) {
-        return JsonHelper.getHelper().getResult(Model.searchSide(coordinates.get("Degree")));
+        return JsonHelper.getHelper().getSideWorld(Model.searchSide(coordinates.get("Degree")));
     }
 }

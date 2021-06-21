@@ -14,9 +14,8 @@ public class JsonHelper extends JSONObject {
         return helper;
     }
 
-    public JsonHelper getResult(String message) {
-        helper.remove("Side");
-        helper.put("Message", message);
+    public JsonHelper getSideWorld(String message) {
+        helper.put("Side", message);
         return helper;
     }
 }
