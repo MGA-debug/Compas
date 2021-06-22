@@ -33,14 +33,17 @@ public class Model implements Serializable {
                 if (firstCoordinate > secondCoordinates) {
                     rangeDegree = 360 - firstCoordinate + secondCoordinates;
                 } else {
-                    rangeDegree = secondCoordinates - firstCoordinate;
+                    rangeDegree = secondCoordinates - firstCoordinate + 1;
                 }
 
-                for (int i = firstCoordinate; rangeDegree >= 0; rangeDegree--, i++) {
+                for (int i = firstCoordinate; rangeDegree > 0; rangeDegree--, i++) {
                     if (i == 360) {
+                        range.add(i);
+                        range.add(0);
                         i = 1;
+                    } else {
+                        range.add(i);
                     }
-                    range.add(i);
                 }
                 SideWorld.getSideByName(name).setCoordinates(range);
             } else {
